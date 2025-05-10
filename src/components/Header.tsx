@@ -5,7 +5,6 @@ import MobileNavigation from "./MobileNavigation";
 import { logout } from "../services/authentication";
 import { useAuth } from "../providers/AuthProvider";
 import { useNavigate } from "react-router";
-import { handleApiError } from "../utils";
 import { useAuthStore } from "../store";
 
 export default function Header() {
@@ -19,8 +18,10 @@ export default function Header() {
       signOut();
       clearUser();
       navigate("/", { replace: true });
-    } catch (error) {
-      handleApiError(error);
+    } catch {
+      signOut();
+      clearUser();
+      navigate("/", { replace: true });
     }
   };
   return (
