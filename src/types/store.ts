@@ -5,7 +5,9 @@ export type User = {
 
 export type AuthState = {
   user: User | null;
+  isLoading: boolean;
   setUser: (user: User) => void;
   clearUser: () => void;
   getCurrentUser: () => User | null;
+  verifyAuth: () => void;
 };
