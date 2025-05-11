@@ -44,7 +44,6 @@ export default function Dashboard() {
   const handleRemoveTodo = async (todoId: number) => {
     try {
       const newTodoList = await removeTodo(todoId);
-      console.log(newTodoList);
 
       setTodos(newTodoList);
     } catch (error) {
