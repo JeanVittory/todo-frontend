@@ -20,6 +20,7 @@ export default function AuthProvider({
   const [isSignedIn, setIsSignedIn] = useState(initialAuthState);
   const signIn = () => setIsSignedIn(true);
   const signOut = () => setIsSignedIn(false);
+
   return (
     <AuthContext.Provider value={{ isSignedIn, signIn, signOut }}>
       {children}
