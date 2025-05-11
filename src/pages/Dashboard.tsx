@@ -11,10 +11,11 @@ import { handleApiError } from "../utils";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const user = useAuthStore((state) => state.getCurrentUser());
+
   const { signOut } = useAuth();
   const navigate = useNavigate();
   const clearUser = useAuthStore((state) => state.clearUser);
+  const verifyAuth = useAuthStore((state) => state.verifyAuth);
 
   useEffect(() => {
     getTodos()
@@ -22,20 +23,15 @@ export default function Dashboard() {
         setTodos(response);
       })
       .catch(() => {
-        console.log("me ejecute 1");
-
         signOut();
         clearUser();
         navigate("/", { replace: true });
       });
   }, [navigate, clearUser, signOut]);
 
-  if (!user || !Object.keys(user).length) {
-    console.log("me ejecute 2");
-    signOut();
-    clearUser();
-    navigate("/", { replace: true });
-  }
+  useEffect(() => {
+    verifyAuth();
+  }, [verifyAuth]);
 
   const handleAddTodo = async (newTodo: CreateTodo) => {
     try {
