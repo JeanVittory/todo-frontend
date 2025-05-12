@@ -1,13 +1,13 @@
 import { type PropsWithChildren } from "react";
-import { useAuth } from "../providers/AuthProvider";
 import { useNavigate } from "react-router";
+import { useAuthStore } from "../store";
 
 type ProtectedRouteProps = PropsWithChildren;
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { isSignedIn } = useAuth();
+  const isUserVerified = useAuthStore((state) => state.isUserVerified);
   const navigate = useNavigate();
 
-  if (!isSignedIn) navigate("/", { replace: true });
+  if (!isUserVerified) navigate("/", { replace: true });
 
   return children;
 }
