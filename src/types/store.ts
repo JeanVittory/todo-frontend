@@ -10,4 +10,5 @@ export type AuthState = {
   clearUser: () => void;
   getCurrentUser: () => User | null;
   verifyAuth: () => void;
+  isUserVerified: boolean;
 };
