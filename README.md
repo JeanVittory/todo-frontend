@@ -1,6 +1,6 @@
 # Todo App Frontend
 
-This application allows authenticated users to manage their to-do tasks within a friendly and easy-to-use Dashboard
+This application allows authenticated users to manage their to-do tasks within a friendly and easy-to-use Dashboard.
 
 ### Tech
 
