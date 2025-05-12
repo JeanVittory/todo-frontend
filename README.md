@@ -36,6 +36,11 @@ For the `VITE_BACKEND_URL`, we recommend using port **3333** as this is the defa
 
 That's all now you can run `npm run dev`.
 
+To authenticate, please use the following credentials:
+
+- Email: admin@byyuto.com
+- Password: password1234
+
 ## Test
 
 Please use `npm run test` to execute the tests into the project.
