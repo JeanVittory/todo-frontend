@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/todoList";
 import { handleApiError } from "../utils";
+import type { AxiosError } from "axios";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -22,10 +23,14 @@ export default function Dashboard() {
       .then((response: Todo[]) => {
         setTodos(response);
       })
-      .catch(() => {
-        signOut();
-        clearUser();
-        navigate("/", { replace: true });
+      .catch((error: AxiosError) => {
+        if (error.status === 401) {
+          signOut();
+          clearUser();
+          navigate("/", { replace: true });
+        } else {
+          handleApiError(error);
+        }
       });
   }, [navigate, clearUser, signOut]);
 
@@ -55,7 +60,7 @@ export default function Dashboard() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">Gestor de Tareas</h1>
+        <h1 className="text-2xl font-bold mb-6">Task manager</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
