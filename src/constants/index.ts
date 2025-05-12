@@ -5,6 +5,7 @@ export const PASSWORD_REQUIRED_MESSAGE = "Password is required.";
 export const PUBLIC_JWT_KEY = import.meta.env.VITE_PUBLIC_JWT_KEY;
 
 export const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+export const API_V1 = "/api/v1";
 export const LOGIN_ENDPOINT = "/login";
 export const LOGOUT_ENDPOINT = "/logout";
 export const GET_USER_TODOS_ENDPOINT = "/todos";
