@@ -8,11 +8,17 @@ import { ToastContainer } from "react-toastify";
 import "./index.css";
 import AuthProvider from "./providers/AuthProvider.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.ts";
+import NotFound from "./components/NotFound.tsx";
+import PublicRoute from "./components/PublicRoute.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
   },
   {
     path: "/dashboard",
@@ -21,6 +27,10 @@ const router = createBrowserRouter([
         <Dashboard />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
