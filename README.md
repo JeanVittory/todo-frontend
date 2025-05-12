@@ -35,3 +35,7 @@ If generated correctly, your key should look like this:
 For the `VITE_BACKEND_URL`, we recommend using port **3333** as this is the default port for the backend. If you choose to use a different port in the backend, make sure to specify it in this variable.
 
 That's all now you can run `npm run dev`.
+
+## Test
+
+Please use `npm run test` to execute the tests into the project.
