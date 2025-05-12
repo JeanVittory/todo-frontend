@@ -22,9 +22,9 @@ import {
 import { Textarea } from "./ui/textarea";
 import type { Priority, CreateTodo } from "../types/todos";
 
-interface TodoFormProps {
+type TodoFormProps = {
   onAddTodo: (todo: Omit<CreateTodo, "id">) => void;
-}
+};
 
 export default function TodoForm({ onAddTodo }: TodoFormProps) {
   const [title, setTitle] = useState("");
@@ -37,7 +37,7 @@ export default function TodoForm({ onAddTodo }: TodoFormProps) {
     e.preventDefault();
 
     if (!title.trim()) {
-      setErrors({ title: "El título es obligatorio" });
+      setErrors({ title: "The title is required." });
       return;
     }
     const newTodo = {
@@ -61,18 +61,18 @@ export default function TodoForm({ onAddTodo }: TodoFormProps) {
       <CardHeader>
         <CardTitle className="text-xl flex items-center gap-2">
           <PlusCircle className="h-5 w-5" />
-          Agregar Nueva Tarea
+          Add new Task
         </CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="title">Título</Label>
+            <Label htmlFor="title">Title</Label>
             <Input
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Ingresa el título de la tarea"
+              placeholder="Enter your task title"
               className={errors.title ? "border-red-500" : ""}
             />
             {errors.title && (
@@ -81,12 +81,12 @@ export default function TodoForm({ onAddTodo }: TodoFormProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Descripción</Label>
+            <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe la tarea"
+              placeholder="Describe your task..."
               rows={3}
             />
           </div>
@@ -98,31 +98,31 @@ export default function TodoForm({ onAddTodo }: TodoFormProps) {
               onCheckedChange={(checked) => setCompleted(checked as boolean)}
             />
             <Label htmlFor="completed" className="cursor-pointer">
-              Completada
+              Completed
             </Label>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="priority">Prioridad</Label>
+            <Label htmlFor="priority">Priority</Label>
             <Select
               value={priority}
               onValueChange={(value) => setPriority(value as Priority)}
             >
               <SelectTrigger id="priority">
-                <SelectValue placeholder="Selecciona la prioridad" />
+                <SelectValue placeholder="Select your priority" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">Baja</SelectItem>
-                <SelectItem value="medium">Media</SelectItem>
-                <SelectItem value="high">Alta</SelectItem>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </CardContent>
 
         <CardFooter>
-          <Button type="submit" className="w-full">
-            Agregar Tarea
+          <Button type="submit" className="w-full lg:cursor-pointer">
+            Add Task
           </Button>
         </CardFooter>
       </form>
