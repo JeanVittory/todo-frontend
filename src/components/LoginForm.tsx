@@ -33,7 +33,6 @@ export default function LoginForm() {
     email: false,
     password: false,
   });
-
   const navigate = useNavigate();
   const { signIn } = useAuth();
   const setUser = useAuthStore((state) => state.setUser);
